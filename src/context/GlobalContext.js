@@ -22,11 +22,18 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
+  const instance = axios.create({
+    baseURL: "https://expense-tracker-backend-001.herokuapp.com",
+    timeout: 5000,
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
   //Actions
   async function getTransactions() {
     try {
-      const res = await axios.get("/api/v1/transactions");
-
+      const res = await instance.get(`/api/v1/transactions`);
+      console.log(res);
       dispatch({
         type: GET_TRANSACTIONS,
         payload: res.data.data
@@ -41,7 +48,7 @@ export const GlobalProvider = ({ children }) => {
 
   const deleteTransaction = async id => {
     try {
-      await axios.delete(`/api/v1/transactions/${id}`);
+      await instance.delete(`/api/v1/transactions/${id}`);
       dispatch({
         type: DELETE_TRANSACTION,
         payload: id
@@ -55,13 +62,8 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const addTransaction = async transaction => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json"
-      }
-    };
     try {
-      const res = await axios.post("api/v1/transactions", transaction, config);
+      const res = await instance.post("api/v1/transactions", transaction);
 
       dispatch({
         type: ADD_TRANSACTION,
