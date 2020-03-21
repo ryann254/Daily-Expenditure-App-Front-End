@@ -23,6 +23,7 @@ export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   const instance = axios.create({
+    baseURL: "https://expense-tracker-backend-001.herokuapp.com",
     timeout: 5000,
     headers: {
       "Content-Type": "application/json"
