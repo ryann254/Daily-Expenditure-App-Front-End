@@ -41,7 +41,8 @@ function AddTransaction() {
         <div className="form-control">
           <label htmlFor="amount">
             Amount <br />
-            (negative - expense, positive - income)
+            (Add a negative number if its an expense, <br />
+            Add a positive number if its an income)
           </label>
           <input
             type="number"

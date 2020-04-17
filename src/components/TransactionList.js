@@ -14,8 +14,8 @@ function TransactionList() {
     <>
       <h3>History</h3>
       <ul className="list">
-        {transactions.map((el, index) => (
-          <Transactions key={index} el={el} />
+        {transactions.map(el => (
+          <Transactions key={el.id} el={el} />
         ))}
       </ul>
     </>
