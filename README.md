@@ -1,3 +1,7 @@
+This an app that lets calculate your Daily Expenses at the go, it has an active backend hosted on heroku
+Here's the link https://expense-tracker-backend-001.herokuapp.com/.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
