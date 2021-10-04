@@ -7,7 +7,7 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^7.1.2",
     "acorn": "^8.2.4",
-    "axios": "^0.21.1",
+    "axios": "^0.22.0",
     "elliptic": "^6.5.3",
     "minimist": "^1.2.2",
     "react": "^16.14.0",
