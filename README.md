@@ -9,6 +9,6 @@ To run the app, simply do a `git clone https://github.com/ryann254/Daily-Expendi
 You simply state name the transaction you made and then state the amount, for an income you would input(+30,000 or 30,000) and for an expense you would input(-30,000), the negative sign has to be present. 
 
 # Credits
-YouTube Channel: Traversy Media
-Video Title: Build an Expense Tracker | React Hooks & Context API
-Link to YouTube Video: https://youtu.be/XuFDcZABiDQ
+YouTube Channel: Traversy Media  
+Video Title: Build an Expense Tracker | React Hooks & Context API  
+Link to YouTube Video: https://youtu.be/XuFDcZABiDQ  
