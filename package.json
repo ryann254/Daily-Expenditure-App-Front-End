@@ -10,8 +10,8 @@
     "axios": "^0.21.1",
     "elliptic": "^6.5.3",
     "minimist": "^1.2.2",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-scripts": "3.4.0"
   },
   "scripts": {
