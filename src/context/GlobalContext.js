@@ -1,19 +1,21 @@
-import React, { createContext, useReducer } from "react";
-import AppReducer from "./AppReducer";
-import axios from "axios";
+import React, { createContext, useReducer } from 'react';
+import AppReducer from './AppReducer';
+import axios from 'axios';
 import {
   DELETE_TRANSACTION,
   ADD_TRANSACTION,
   GET_TRANSACTIONS,
-  TRANSACTION_ERROR
-} from "./ActionTypes";
+  TRANSACTION_ERROR,
+} from './ActionTypes';
 
 //Initial State
 const initialState = {
   transactions: [],
   error: null,
-  loading: true
+  loading: true,
 };
+
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 //Create context
 export const GlobalContext = createContext(initialState);
@@ -25,52 +27,56 @@ export const GlobalProvider = ({ children }) => {
   //Actions
   async function getTransactions() {
     try {
-      const res = await axios.get("/api/v1/transactions");
+      const res = await axios.get(`${backendUrl}/api/v1/transactions`);
 
       dispatch({
         type: GET_TRANSACTIONS,
-        payload: res.data.data
+        payload: res.data.data,
       });
     } catch (error) {
       dispatch({
         type: TRANSACTION_ERROR,
-        payload: error.response.data.error
+        payload: error.response.data.error,
       });
     }
   }
 
-  const deleteTransaction = async id => {
+  const deleteTransaction = async (id) => {
     try {
-      await axios.delete(`/api/v1/transactions/${id}`);
+      await axios.delete(`${backendUrl}/api/v1/transactions/${id}`);
       dispatch({
         type: DELETE_TRANSACTION,
-        payload: id
+        payload: id,
       });
     } catch (error) {
       dispatch({
         type: TRANSACTION_ERROR,
-        payload: error.response.data.error
+        payload: error.response.data.error,
       });
     }
   };
 
-  const addTransaction = async transaction => {
+  const addTransaction = async (transaction) => {
     const config = {
       headers: {
-        "Content-Type": "application/json"
-      }
+        'Content-Type': 'application/json',
+      },
     };
     try {
-      const res = await axios.post("api/v1/transactions", transaction, config);
+      const res = await axios.post(
+        `${backendUrl}/api/v1/transactions`,
+        transaction,
+        config
+      );
 
       dispatch({
         type: ADD_TRANSACTION,
-        payload: res.data.data
+        payload: res.data.data,
       });
     } catch (error) {
       dispatch({
         type: TRANSACTION_ERROR,
-        payload: error.response.data.error
+        payload: error.response.data.error,
       });
     }
   };
@@ -83,7 +89,7 @@ export const GlobalProvider = ({ children }) => {
         transactions: state.transactions,
         getTransactions,
         deleteTransaction,
-        addTransaction
+        addTransaction,
       }}
     >
       {children}

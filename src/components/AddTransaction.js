@@ -1,57 +1,57 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext } from 'react';
 
-import { GlobalContext } from "../context/GlobalContext";
+import { GlobalContext } from '../context/GlobalContext';
 function AddTransaction() {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const [amount, setAmount] = useState(0);
   const { addTransaction } = useContext(GlobalContext);
 
-  const textChange = e => {
+  const textChange = (e) => {
     setText(e.target.value);
   };
-  const amountChange = e => {
+  const amountChange = (e) => {
     setAmount(e.target.value);
   };
 
-  const Submit = e => {
+  const Submit = (e) => {
     e.preventDefault();
     const newTransaction = {
       id: Math.floor(Math.random() * 10000000),
       text,
-      amount: +amount
+      amount: +amount,
     };
-    setAmount(0);
-    setText("");
 
     addTransaction(newTransaction);
+    setAmount(0);
+    setText('');
   };
   return (
     <>
       <h3>Add a new Transaction</h3>
       <form onSubmit={Submit}>
-        <div className="form-control">
-          <label htmlFor="text">Name your transaction</label>
+        <div className='form-control'>
+          <label htmlFor='text'>Name your transaction</label>
           <input
-            type="text"
-            placeholder="Enter text..."
+            type='text'
+            placeholder='Enter text...'
             value={text}
             onChange={textChange}
           />
         </div>
-        <div className="form-control">
-          <label htmlFor="amount">
+        <div className='form-control'>
+          <label htmlFor='amount'>
             Amount <br />
             (Add a negative number if its an expense, <br />
             Add a positive number if its an income)
           </label>
           <input
-            type="number"
-            placeholder="Enter amount...."
+            type='number'
+            placeholder='Enter amount....'
             value={amount}
             onChange={amountChange}
           />
         </div>
-        <button className="btn">Add Transaction</button>
+        <button className='btn'>Add Transaction</button>
       </form>
     </>
   );
