@@ -1,6 +1,6 @@
 # Daily Expenditure App
 This is the frontend for a webapp that lets you calculate your Daily Expenses at the go, it has an active backend hosted on heroku
-Here's the link https://expense-tracker-backend-001.herokuapp.com/.
+Here's the link [Expense Tracker App](https://expense-app-frontend.netlify.app/).
 
 To run the app, simply do a `git clone https://github.com/ryann254/Daily-Expenditure-App-Front-End.git`, cd into the cloned project, then do a `yarn install`. Lastly type in `yarn start` in your terminal to run the project.
 
